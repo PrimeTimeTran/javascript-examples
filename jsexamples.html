@@ -1,0 +1,50 @@
+<html>
+<head>
+  <title>Javascript Tutorial!</title>
+</head>
+  <body>
+    <div class="container wrapper" id="code">
+      <h1>Amazing Playlist</h1>
+        <ul id="playlist">
+          <li id="song1">Take Care by Drake</li>
+          <li id="song2">Love yourself by Justin Bieber</li>
+          <li id="song3">Burn by Usher</li>
+        </ul>
+
+        <button type="button" name="button" onclick="change()" id="button" data-text-swap="Click me" data-text-swap="Don't Click me!">Click Me</button>
+    </div>
+    <script type="text/javascript">
+
+    // Change a Button's Text
+      function change() {
+        var button = document.getElementById('button').innerHTML;
+
+        if (button == "Click Me") {
+          var button = document.getElementById('button');
+          var song = document.getElementById('song1');
+
+          song.style.color = "blue";
+          button.innerHTML = "Change Back";
+
+        } else {
+          var button = document.getElementById('button');
+          var song = document.getElementById('song1');
+
+          song.style.color = "black";
+          button.innerHTML = "Click Me";
+        }
+      }
+
+      // Cycle through colors 
+      var colors = ['red', 'blue', 'green', 'yellow', 'pink', 'teal']
+      function changeColors() {
+        var rand = colors[Math.floor(Math.random() * colors.length)];
+
+        var song = document.getElementById('song2');
+        song.style.color = rand;
+
+      }
+      setInterval(changeColors, 1000);
+    </script>
+  </body>
+<html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Javascript Tutorial!</title>
+</head>
+  <body>
+    <div class="container wrapper">
+    </div>
+    <script type="text/javascript" src="javascript.js"></script><br>
+    <script type="text/javascript">
+
+
+
+function Animal() {
+  this.name = "Animal";
+
+  this.toString = function() {
+    return "My name is " + this.name;
+  };
+}
+
+
+function Canine() {
+  this.name = "Canine";
+}
+
+
+function Wolf() {
+  this.name = "Wolf";
+}
+
+Canine.prototype = new Animal();
+Wolf.prototype = new Canine();
+
+Canine.prototype.constructor = Canine;
+Wolf.prototype.constructor = Wolf;
+
+var articWolf = new Wolf();
+
+document.write(articWolf.toString() + "<br />")
+document.write("Wolf instance of Animal? " + (articWolf instanceof Animal) + "<br />")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+  </body>
+<html>
