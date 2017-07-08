@@ -205,3 +205,34 @@ document.write("A circle with radius: " + circ.radius + " has an area of " + cir
 
 // Inheritance
 document.write("<br>------------------------------------------- Inheritance -------------------------------------------  <br><br>")
+
+
+// Last left off
+function Animal() {
+  this.name = "Animal";
+
+  this.toString = function() {
+    return "My name is " + this.name;
+  };
+}
+
+
+function Canine() {
+  this.name = "Canine";
+}
+
+
+function Wolf() {
+  this.name = "Wolf";
+}
+
+Canine.prototype = new Animal();
+Wolf.prototype = new Canine();
+
+Canine.prototype.constructor = Canine;
+Wolf.prototype.constructor = Wolf;
+
+var articWolf = new Wolf();
+
+document.write(articWolf.toString() + "<br />");
+document.write("Wolf instance of Animal? " + (articWolf instanceof Animal) + "<br />");

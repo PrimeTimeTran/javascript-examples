@@ -9,6 +9,44 @@
     <script type="text/javascript" src="javascript.js"></script><br>
     <script type="text/javascript">
 
+// pitfall of using ===
+var bar = null;
+console.log(typeof bar === "object");
+
+// solution is
+console.log((bar !== null) && (typeof bar === "object"));
+
+
+// What this actually results in
+// b = 3;
+// var a = b;
+(function(){
+  var a = b = 3;
+})();
+
+console.log("a defined? " + (typeof a !== 'undefined'));
+console.log("b defined? " + (typeof b !== 'undefined'));
+
+
+// In the outer function, both this and self refer to myObject and therefore both can properly reference and access foo.
+//
+// In the inner function, though, this no longer refers to myObject.
+// As a result, this.foo is undefined in the inner function, whereas the reference to the local variable self remains in
+// scope and is accessible there.
+var myObject = {
+    foo: "bar",
+    func: function() {
+        var self = this;
+        console.log("outer func:  this.foo = " + this.foo);
+        console.log("outer func:  self.foo = " + self.foo);
+        (function() {
+            console.log("inner func:  this.foo = " + this.foo);
+            console.log("inner func:  self.foo = " + self.foo);
+        }());
+    }
+};
+myObject.func();
+
 
 
 function Animal() {
@@ -39,19 +77,6 @@ var articWolf = new Wolf();
 
 document.write(articWolf.toString() + "<br />")
 document.write("Wolf instance of Animal? " + (articWolf instanceof Animal) + "<br />")
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     </script>
   </body>
